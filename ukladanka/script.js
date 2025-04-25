@@ -8,6 +8,7 @@ const settingsDiv = document.getElementById('settings');
 const imageInput = document.getElementById('imageInput');
 const rowsInput = document.getElementById('rowsInput');
 const columnInput = document.getElementById('columnInput');
+const orderInput = document.getElementById('orderInput');
 const startButton = document.getElementById('startButton');
 
 const ctx = puzzleCanvas.getContext('2d');
@@ -113,7 +114,19 @@ startButton.addEventListener('click', () => {
 
 	tiles = Array.from({length: size}, (_, i) => i);
 	tiles[size - 1] = 'empty';
-	shuffle();
+
+	let orderArray = orderInput.value.split(',', size);
+	orderArray = orderArray.map(v => v-1);
+	orderArray[orderArray.indexOf(-1)] = 'empty';
+	if (!orderArray.filter(v => !(v in tiles))) {
+		alert('Niepoprawny format kolejności. Wypisz odpowiednią liczbę liczb oddzielonych przecinkami, gdzie 0 oznacza puste pole.');
+		shuffle();
+	} else {
+		tiles = orderArray;
+		console.log(orderArray);
+		console.log(tiles);
+	}
+
 
 	img = new Image();
 	img.onload = () => draw();
