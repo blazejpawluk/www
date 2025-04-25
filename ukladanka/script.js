@@ -23,6 +23,7 @@ let tileWidth;
 let tileHeight;
 let emptyIndex;
 let defaultImage;
+let counter = 0;
 
 // mieszanie obrazka
 function shuffle() {
@@ -170,12 +171,14 @@ puzzleCanvas.addEventListener('pointerdown', e => {
 	const index = row * columns + column;
 
 	if (isNeighbor(index, emptyIndex)) {
+		counter++;
 		[tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
 		emptyIndex = index;
 		draw();
 	}
 
 	if (gameWon()) {
+		winMessage.innerText = `Wygrana w ${counter} ruchach`;
 		winMessage.style.visibility = 'visible';
 		localStorage.removeItem('puzzle');
 	} else {
