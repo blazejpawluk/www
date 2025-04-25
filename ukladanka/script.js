@@ -11,7 +11,6 @@ const columnInput = document.getElementById('columnInput');
 const startButton = document.getElementById('startButton');
 
 const ctx = puzzleCanvas.getContext('2d');
-
 const image = 'images/default.jpg';
 
 let img = new Image();
