@@ -139,6 +139,7 @@ startButton.addEventListener('click', () => {
 		defaultImage = 1;
 	}
 
+	counter = 0;
 	saveState();
 });
 resetButton.addEventListener('click', () => {
@@ -254,7 +255,8 @@ function saveState() {
 		columns,
 		rows,
 		tiles,
-		emptyIndex
+		emptyIndex,
+		counter
 	}));
 }
 
@@ -279,6 +281,7 @@ function loadState() {
 	size = rows * columns;
 	tiles = savedState.tiles;
 	emptyIndex = savedState.emptyIndex;
+	counter = savedState.counter;
 
 	img.onload = () => draw();
 }
