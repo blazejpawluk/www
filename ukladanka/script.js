@@ -106,6 +106,19 @@ window.addEventListener('resize', () => {
 	if (tiles) draw();
 });
 
+function equalArray(array1, array2) {
+	if (array1.length !== array2.length) {
+		return false;
+	}
+	
+	for (let i = 0; i < array1.length; i++) {
+		if (array2.indexOf(array1[i]) === -1) {
+			return false;
+		}
+	}
+	return true;
+}
+
 // rozpoczęcie gry
 startButton.addEventListener('click', () => {
 	rows = parseInt(rowsInput.value) || 3;
@@ -115,16 +128,20 @@ startButton.addEventListener('click', () => {
 	tiles = Array.from({length: size}, (_, i) => i);
 	tiles[size - 1] = 'empty';
 
-	let orderArray = orderInput.value.split(',', size);
+	let orderArray = orderInput.value.split(',');
 	orderArray = orderArray.map(v => v-1);
 	orderArray[orderArray.indexOf(-1)] = 'empty';
-	if (!orderArray.filter(v => !(v in tiles))) {
-		alert('Niepoprawny format kolejności. Wypisz odpowiednią liczbę liczb oddzielonych przecinkami, gdzie 0 oznacza puste pole.');
+	if (orderInput.value === '') {
+		shuffle();
+	} else if(!equalArray(orderArray, tiles)) {
+		alert('Niepoprawna kolejność. Tworzenie losowej.');
 		shuffle();
 	} else {
 		tiles = orderArray;
-		console.log(orderArray);
-		console.log(tiles);
+		if (!isSolvable()) {
+			alert('Układanka niemożliwa do ułożenia. Tworzenie losowej.');
+			shuffle();
+		}
 	}
 
 
@@ -279,7 +296,6 @@ function loadState() {
 	}
 
 	const savedState = JSON.parse(localStorage.puzzle);
-	console.log(savedState);
 
 	defaultImage = savedState.defaultImage;
 	img = new Image();
