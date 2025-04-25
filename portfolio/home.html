@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Błażej Pawluk</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<header>
+			<a href="home.html" class="site-title">Błażej Pawluk</a>
+			<img src="images/hamburger.png" alt="Menu" class="menuIcon" id="menuIcon">
+			<nav id="menu">
+				<ul class="nav-menu">
+					<li class="header-button" id="homeButton">
+						<a href="home.html" class="active">Strona główna
+							<img src="images/home.png" alt="Strona główna" class="icon" id="homeImage">
+						</a>
+					</li>
+					<li class="header-button" id="hobbiesButton">
+						<a href="hobbies.html">Zainteresowania
+							<img src="images/football.png" alt="Zainteresowania" class="icon" id="hobbyImage">
+						</a>
+					</li>
+					<li class="header-button" id="projectsButton">
+						<a href="projects.html">Projekty
+							<img src="images/projects.png" alt="Projekty" class="icon" id="projectImage">
+						</a>
+					</li>
+					<li>
+						<ul class="social-box">
+							<li>
+								<a href="https://www.facebook.com/profile.php?id=100023762712516&locale=pl_PL" target="_blank" class="social">
+									<img src="images/facebook-icon.svg" alt="Facebook">
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/blazej.16/" target="_blank" class="social">
+									<img src="images/instagram-icon.svg" alt="Instagram">
+								</a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/błażej-pawluk-67831132a/" target="_blank" class="social">
+									<img src="images/linkedin-icon.svg" alt="LinkedIn">
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<article>
+				<h1>Strona główna</h1>
+
+				<section>
+					<h2>O mnie</h2>
+					<div class="component-content">
+						<img src="images/photo.png" alt="Moje zdjęcie" class="component-image">
+						<div class="component-desc">
+							<p class="component-text">Błażej Pawluk</p>
+							<p class="component-text">Student drugiego roku studiów na kierunku Informatyka Algorytmiczna na Politechnika Wrocławska (2023-obecnie)</p>
+							<p class="component-text">Wcześniejsze szkoły: Liceum Ogólnokształcące nr 3 im. Adama Mickiewicza we Wrocławiu (profil matematyczno-informatyczny, 2019-2023), Szkoła Podstawowa nr 51 im. Jana Pawła II we Wrocławiu-Leśnicy</p>
+							<p class="component-text">Znane języki programowania: Java, C, C++, SQL, Haskell, a także znajomość HTML oraz CSS</p>
+							<p class="component-text">Znane języki obce: angielski (zaawansowany), hszpański (podstawowy), niemiecki (podstawowy), polski (ojczysty)</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Kontakt</h2>
+					<div class="component-content">
+						<div class="component-desc">
+							<p class="component-text">🕻 +48 607 633 205</p>
+							<p class="component-text">✉ bpawluk05@gmail.com</p>
+							<p class="component-text">🏠︎ ul. Leśna 25, 55-330, Lutynia</p>
+						</div>
+					</div>
+				</section>
+			</article>
+
+			<article>
+				<h1>Galeria zdjęć</h1>
+
+				<div id="gallery" class="gallery"></div>
+			</article>
+		</main>
+
+		<footer>
+			<p>&copy; 2025 Błażej Pawluk</p>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>

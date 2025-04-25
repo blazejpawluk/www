@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Błażej Pawluk: Projekty</title>
+		<link rel="stylesheet" href="styles.css">
+
+		<!-- kolory -->
+		<link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css">
+
+		<!-- rdzeń prism -->
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+		<!-- java -->
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+
+		<!-- sql -->
+		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<a href="home.html" class="site-title">Błażej Pawluk</a>
+			<img src="images/hamburger.png" alt="Menu" class="menuIcon" id="menuIcon">
+			<nav id="menu">
+				<ul class="nav-menu">
+					<li class="header-button" id="homeButton">
+						<a href="home.html">Strona główna
+							<img src="images/home.png" alt="Strona główna" class="icon" id="homeImage">
+						</a>
+					</li>
+					<li class="header-button" id="hobbiesButton">
+						<a href="hobbies.html">Zainteresowania
+							<img src="images/football.png" alt="Zainteresowania" class="icon" id="hobbyImage">
+						</a>
+					</li>
+					<li class="header-button" id="projectsButton">
+						<a href="projects.html" class="active">Projekty
+							<img src="images/projects.png" alt="Projekty" class="icon" id="projectImage">
+						</a>
+					</li>
+					<li>
+						<ul class="social-box">
+							<li>
+								<a href="https://www.facebook.com/profile.php?id=100023762712516&locale=pl_PL" target="_blank" class="social">
+									<img src="images/facebook-icon.svg" alt="Facebook">
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/blazej.16/" target="_blank" class="social">
+									<img src="images/instagram-icon.svg" alt="Instagram">
+								</a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/błażej-pawluk-67831132a/" target="_blank" class="social">
+									<img src="images/linkedin-icon.svg" alt="LinkedIn">
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<article>
+				<h1>Moje projekty</h1>
+
+				<section>
+					<h2>Trylma - chińskie warcaby</h2>
+					<div class="component-content">
+						<img src="images/trylma.png" alt="Trylma" class="component-image">
+						<div class="component-desc">
+							<p class="component-text">Komputerowa implementacja chińskiej wersji popularnych warcabów.</p>
+							<p class="component-text">Zagrać można w 2 wersje gry - klasyczna i order out of chaos, w 2, 3, 4 lub 6 osób, a także można sprawdzić swoje umiejętności przeciwko komputerowi.</p>
+							<p class="component-text">Aplikacja stworzona w formacie klient-serwer. Na kilku serwerach rozgrywane są różne gry. Gracz z poziomu aplikacji może dołączyć do wybranego pokoju i grać w Trylmę.</p>
+							<p class="component-text">Możliwość odtwarzania poprzednich gier i analizowania swoich zagrań.</p>
+							<p class="component-text">Aplikacja pisana w języku Java, korzystając z JavyFX do interfejsu graficznego graczy oraz Springa do przechowywania poprzednich gier od otworzenia.</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>SzopDB - symulacja sklepu internetowego</h2>
+					<div class="component-content">
+						<img src="images/szopdb.png" alt="SzopDB" class="component-image">
+						<div class="component-desc">
+							<p class="component-text">Aplikacja będąca symulacją odzieżowego sklepu internetowego.</p>
+							<p class="component-text">Aplikacja jest przeznaczona zarówno dla klientów sklepu, jak i sprzedawców i magazynierów. Klienci mogą przeglądać i zamawiać produkty. Mają również możliwość przeglądania swoich wcześniejszych zamówień. Sprzedawcy zajmują się dodawaniem i edycją produktów, natomiast magazynierzy poza obsługą dostaw do magazynu, kompletują również zamówienia klientów oraz rozpatrują zwroty.</p>
+							<p class="component-text">Większość operacji wykonywana jest poprzez procedury w bazie danych, co zapobiega SQL Injection.</p>
+							<p class="component-text">Aplikacja pisana w jęzku Java, korzystając z JavyFX do interfejsu graficznego użytkowników oraz Springa do połączenia z bazą danych, postawionej na serwerze MariaDB.</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Aplikacja do raportów</h2>
+					<div class="component-content">
+						<img src="images/raport.png" alt="Raport" class="component-image">
+						<div class="component-desc">
+							<p class="component-text">Aplikacja dla lokalnej piekarni, usprawniająca proces kontroli wydawanych produktów.</p>
+							<p class="component-text">W aplikacji można tworzyć raporty dotyczące wydawanego pieczywa, generować podsumowania raportów filtrowane przez datę i/lub produkt do plików Excela. Aplikacja pozwala również na zarządzanie bazą danych pracowników czy produktów.</p>
+							<p class="component-text">Aplikacja pisana w języku Java, korzystając z JavyFX do interfejsu graficznego użytkowników oraz Springa do połączenia z bazą danych.</p>
+						</div>
+					</div>
+				</section>
+			</article>
+
+			<hr>
+
+			<article>
+				<h1>Najlepsze fragmenty kodu</h1>
+
+				<div class="code-box">
+<pre><code class="language-java">// funkcja sprawdzająca czy liczba jest pierwsza - 95% skuteczności dla liczb mniejszych od 1000000
+bool isPrime(int x) {
+    return false;
+}</code></pre>
+				</div>
+
+				<div class="code-box">
+<pre><code class="language-sql">-- tabela użytkowników
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    login VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+
+    UNIQUE(password)
+);</code></pre>
+				</div>
+
+				<div class="code-box">
+<pre><code class="language-java">// sortowanie tablicy
+public void sort(int[] a) {
+    Thread[] threads = new Thread[a.length];
+
+    for (int i = 0; i &lt; a.length; i++) {
+        final int num = a[i];
+        threads[i] = new Thread(() -> {
+            try {
+                Thread.sleep(num);
+                System.out.println(num + " ");
+            } catch (Exception e) {}
+        });
+        threads[i].start();
+    }
+
+    for (Thread t : threads) {
+        try {
+            t.join();
+        } catch(Exception e) {}
+    }
+
+    System.out.println();
+}</code></pre>
+				</div>
+			</article>
+		</main>		  
+		
+		<footer>
+			<p>&copy; 2025 Błażej Pawluk</p>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>
