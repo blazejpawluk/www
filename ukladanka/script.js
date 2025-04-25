@@ -12,18 +12,7 @@ const startButton = document.getElementById('startButton');
 
 const ctx = puzzleCanvas.getContext('2d');
 
-const images = [
-	// 'images/bombardiroCrocodilo.jpg',
-	// 'images/tralaleroTralala.jpg',
-	// 'images/tungTungSahur.jpg',
-	'images/default.jpg'
-];
-
-const sounds = [
-	// 'sounds/bombardiroCrocodilo.mp3',
-	// 'sounds/tralaleroTralala.mp3',
-	// 'sounds/tungTungSahur.mp3'
-]
+const image = 'images/default.jpg';
 
 let img = new Image();
 let rows;
@@ -145,9 +134,8 @@ startButton.addEventListener('click', () => {
 		defaultImage = -1;
 		imageInput.value = "";
 	} else {
-		const randIndex = Math.floor(Math.random() * images.length);
-		img.src = images[randIndex];
-		defaultImage = randIndex;
+		img.src = image;
+		defaultImage = 1;
 	}
 
 	saveState();
@@ -190,10 +178,6 @@ puzzleCanvas.addEventListener('pointerdown', e => {
 	if (gameWon()) {
 		winMessage.style.visibility = 'visible';
 		localStorage.removeItem('puzzle');
-		// if (defaultImage != -1) {
-		// 	let audio = new Audio(sounds[index]);
-		// 	audio.play();
-		// }
 	} else {
 		saveState();
 	}
@@ -283,7 +267,7 @@ function loadState() {
 	defaultImage = savedState.defaultImage;
 	img = new Image();
 	if (defaultImage != -1) {
-		img.src = images[defaultImage];
+		img.src = image;
 	} else {
 		img.src = savedState.imgSrc;
 	}
