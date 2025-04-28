@@ -127,22 +127,23 @@ startButton.addEventListener('click', () => {
 
 	tiles = Array.from({length: size}, (_, i) => i);
 	tiles[size - 1] = 'empty';
+	shuffle();
 
-	let orderArray = orderInput.value.split(',');
-	orderArray = orderArray.map(v => v-1);
-	orderArray[orderArray.indexOf(-1)] = 'empty';
-	if (orderInput.value === '') {
-		shuffle();
-	} else if(!equalArray(orderArray, tiles)) {
-		alert('Niepoprawna kolejność. Tworzenie losowej.');
-		shuffle();
-	} else {
-		tiles = orderArray;
-		if (!isSolvable()) {
-			alert('Układanka niemożliwa do ułożenia. Tworzenie losowej.');
-			shuffle();
-		}
-	}
+	// let orderArray = orderInput.value.split(',');
+	// orderArray = orderArray.map(v => v-1);
+	// orderArray[orderArray.indexOf(-1)] = 'empty';
+	// if (orderInput.value === '') {
+	// 	shuffle();
+	// } else if(!equalArray(orderArray, tiles)) {
+	// 	alert('Niepoprawna kolejność. Tworzenie losowej.');
+	// 	shuffle();
+	// } else {
+	// 	tiles = orderArray;
+	// 	if (!isSolvable()) {
+	// 		alert('Układanka niemożliwa do ułożenia. Tworzenie losowej.');
+	// 		shuffle();
+	// 	}
+	// }
 
 
 	img = new Image();
