@@ -188,7 +188,7 @@ function isNeighbor(i, j) {
 }
 
 // obsługa kliknięcia w klocka
-puzzleCanvas.addEventListener('pointerdown', e => {
+puzzleCanvas.addEventListener('click', e => {
 	// pozycja canvas w oknie
 	const canvasPos = puzzleCanvas.getBoundingClientRect();
 
