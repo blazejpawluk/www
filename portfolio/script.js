@@ -72,7 +72,8 @@ const imgPaths = [
 	"images/raport.png",
 	"images/sport.jpg",
 	"images/szopdb.png",
-	"images/trylma.png"
+	"images/trylma.png",
+	"aaa.png"
 ];
 
 function loadImg(path) {
@@ -87,14 +88,12 @@ function loadImg(path) {
 	});
 }
 
-Promise
-	.all(imgPaths.map(loadImg))
-	.then(function(images) {
-        images.forEach(function(img) {
-            gallery.appendChild(img);
-        });
+imgPaths.forEach(function(img) {
+	var p = loadImg(img);
+	p.then(function(img) {
+		gallery.appendChild(img);
 	})
-	.catch(function(e) {
+	p.catch(function(e) {
 		console.error(e);
-		gallery.textContent = "Wystąpił błąd przy ładowaniu zdjęć.";
-	});
+	})
+});
