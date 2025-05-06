@@ -1,0 +1,56 @@
+body {
+	margin: 0px;
+	margin-top: 10px;
+	width: 100%;
+}
+
+section {
+	margin: auto;
+	width: 80%;
+	border-radius: 10px;
+	background-color: #dddddd;
+	padding: 20px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+
+	font-family: 'Verdana';
+	color: #333333;
+}
+
+h1 {
+	margin: 0px;
+	font-size: 35px;
+	text-align: center;
+}
+
+canvas {
+	width: 100%;
+	grid-column: 1;
+	grid-row: 1;
+}
+
+p {
+	width: 150px;
+	height: 75px;
+	grid-column: 1;
+	grid-row: 1;
+
+	text-align: center;
+	border-radius: 10px;
+	background-color: #333333;
+	color: #ffffff;
+	align-content: center;
+	margin: auto;
+}
+
+button {
+	width: 200px;
+	height: 75px;
+	background-color: #333333;
+	color: #ffffff;
+	border-radius: 10px;
+	border-color: transparent;
+}
