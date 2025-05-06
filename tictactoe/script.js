@@ -58,11 +58,19 @@ canvas.addEventListener('click', e => {
 		img.onload = () => {
 			ctx.drawImage(img, 0, 0, img.width, img.height, column * offset + (column + 1) * 4, row * offset + (row + 1) * 4, offset, offset);
 		}
-		move++;
-
-		if (checkWin()) {
+		
+		let sign = move %  2 === 0 ? 'x' : 'o';
+		if (checkWin(index, sign)) {
+			winMsg.innerText = `Wygrana ${sign}`;
 			winMsg.style.visibility = 'visible';
 		}
+
+		if(checkLoss(index, sign)) {
+			winMsg.innerText =`Wygrana ${move %  2 === 1 ? 'x' : 'o'}`;
+			winMsg.style.visibility = 'visible';
+		}
+
+		move++;
 	}
 });
 
@@ -74,61 +82,67 @@ function checkWin(index, sign) {
 	let countX = 0;
 	let countO = 0;
 	for (let i = 0; i < 5; i++) {
-		if (board[i * 5 + row] === 'x') countX++;
-		else if (board[i * 5 + row] === 'o') countO++;
+		if (board[i * 5 + column] === 'x') countX++;
+		else if (board[i * 5 + column] === 'o') countO++;
 	}
 
 	if (sign === 'x' && countX >= 4) {
+		let count = 0;
 		for (let i = 5; i <= 15; i += 5) {
-			if (board[i + row] !== 'x') return false;
+			if (board[i + column] !== 'x') count++;
 		}
-		return true;
+		if (count === 0) return true;
 	}
 
 	if (sign === 'o' && countO >= 4) {
+		let count = 0;
 		for (let i = 5; i <= 15; i += 5) {
-			if (board[i + row] !== 'o') return false;
+			if (board[i + column] !== 'o') count++;
 		}
-		return true;
+		if (count === 0) return true;
 	}
 
 	// lewo - prawo
 	countX = 0;
 	countO = 0;
 	for (let i = 0; i < 5; i++) {
-		if (board[column * 5 + i] === 'x') countX++;
-		else if (board[column * 5 + i] === 'o') countO++;
+		if (board[row * 5 + i] === 'x') countX++;
+		else if (board[row * 5 + i] === 'o') countO++;
 	}
 
 	if (sign === 'x' && countX >= 4) {
+		let count = 0;
 		for (let i = 1; i < 4; i++) {
-			if (board[column * 5 + i] !== 'x') return false;
+			if (board[row * 5 + i] !== 'x') count++;
 		}
-		return true;
+		if (count === 0) return true;
 	}
 
 	if (sign === 'o' && countO >= 4) {
+		let count = 0;
 		for (let i = 1; i < 4; i++) {
-			if (board[column * 5 + i] !== 'o')  return false;
+			if (board[row * 5 + i] !== 'o') count++;
 		}
-		return true;
+		if (count === 0) return true;
 	}
 
 	// lewo gora - prawo dol
 	if (row + 1 === column) {
+		let count = 0;
 		for (let i = 1; i <= 19; i += 6) {
-			if (board[i] !== sign) return false;
+			if (board[i] === sign) count++;
 		}
-		return true;
+		if (count === 4) return true;
 	}
-
+	
 	if (row - 1 === column) {
+		let count = 0;
 		for (let i = 5; i <= 23; i += 6) {
-			if (board[i] !== sign) return false;
+			if (board[i] === sign) count++;
 		}
-		return true;
+		if (count === 4) return true;
 	}
-
+	
 	if (row === column) {
 		countX = 0;
 		countO = 0;
@@ -139,34 +153,39 @@ function checkWin(index, sign) {
 		}
 
 		if (sign === 'x' && countX >= 4) {
+			let count = 0;
 			for (let i = 6; i <= 18; i += 6) {
-				if (board[i] !== 'x') return false;
+				if (board[i] !== 'x') count++;
 			}
-			return true;
+			if (count === 0) return true;
 		}
+		
 		if (sign === 'o' && countO >= 4) {
+			let count = 0;
 			for (let i = 6; i <= 18; i += 6) {
-				if (board[i] !== 'o') return false;
+				if (board[i] !== 'o') count++;
 			}
-			return true;
+			if (count === 0) return true;
 		}
 	}
 
 	// lewo dol - prawo gora
 	if (row + column === 3) {
+		let count = 0;
 		for (let i = 3; i <= 15; i += 4) {
-			if (board[i] !== sign) return false;
+			if (board[i] === sign) count++;
 		}
-		return true;
+		if (count === 4) return true;
 	}
-
+	
 	if (row + column === 5) {
+		let count = 0;
 		for (let i = 9; i <= 21; i += 4) {
-			if (board[i] !== sign) return false;
+			if (board[i] === sign) count++;
 		}
-		return true;
+		if (count === 4) return true;
 	}
-
+	
 	if (row + column === 4) {
 		countX = 0;
 		countO = 0;
@@ -176,17 +195,156 @@ function checkWin(index, sign) {
 		}
 
 		if (sign === 'x' && countX >= 4) {
+			let count = 0;
 			for (let i = 8; i <= 16; i += 4) {
-				if (board[i] !== 'x') return false;
+				if (board[i] !== 'x') count++;
 			}
-			return true;
+			if (count === 0) return true;
 		}
-
+		
 		if (sign === 'o' && countO >= 4) {
+			let count = 0;
 			for (let i = 8; i <= 16; i += 4) {
-				if (board[i] !== 'o') return false;
+				if (board[i] !== 'o') count++;
 			}
-			return true;
+			if (count === 0) return true;
 		}
 	}
+
+	return false;
+}
+
+function checkLoss(index, sign) {
+	const column = index % 5;
+	const row = Math.floor(index / 5);
+
+	// gora dol
+	for (let i = 0; i <= 2; i++) {
+		let count = 0;
+		for (let j = i; j < i + 3; j++) {
+			if (board[j * 5 + column] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	// lewo prawo
+	for (let i = 0; i <= 2; i++) {
+		let count = 0;
+		for (let j = i; j < i + 3; j++) {
+			if (board[row * 5 + j] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	// lewo-gora prawo-dol
+	if (row + 2 === column) {
+		let count = 0;
+		for (let i = 2; i <= 14; i += 6) {
+			if (board[i] === sign) count++;
+		}
+		if (count == 3) return true;
+	}
+
+	if (row + 1 === column) {
+		let count = 0;
+		for (let i = 1; i <= 13; i += 6) {
+			if (board[i] === sign) count++;
+		}
+		if (count === 3) return true;
+
+		count = 0;
+		for (let i = 7; i <= 19; i += 6) {
+			if (board[i] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	if (row === column) {
+		for (let i = 0; i < 3; i++) {
+			let count = 0;
+			for (let j = i * 6; j <= i * 6 + 12; j += 6) {
+				if (board[j] == sign) count++;
+			}
+			if (count === 3) return true;
+		}
+	}
+
+	if (row - 1 === column) {
+		let count = 0;
+		for (let i = 5; i <= 17; i += 6) {
+			if (board[i] === sign) count++;
+		}
+		if (count === 3) return true;
+
+		count = 0;
+		for (let i = 11; i <= 23; i += 6) {
+			if (board[i] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	if (row - 2 === column) {
+		let count = 0;
+		for (let i = 10; i <= 22; i += 6) {
+			if (board[i] === sign) count++;
+		}
+		if (count == 3) return true;
+	}
+
+	// lewo-dol prawo-gora
+	if (row + column === 2) {
+		let count = 0;
+		for (let i = 0; i < 2; i++) {
+			if (board[i * 5 + 2 - i] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	if (row + column === 3) {
+		let count = 0;
+		for (let i = 0; i < 3; i++) {
+			if (board[i * 5 + 3 - i] === sign) count++;
+		}
+		if (count === 3) return true;
+
+		count = 0;
+		for (let i = 1; i < 4; i++) {
+			if (board[i * 5 + 3 - i] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	if (row + column === 4) {
+		for (let i = 0; i < 3; i++) {
+			let count = 0;
+			for (let j = i; j < i + 3; j++) {
+				if (board[j * 5 + 4 - j] == sign) count++;
+			}
+			if (count === 3) return true;
+		}
+	}
+
+	if (row + column === 5) {
+		let count = 0;
+		for (let i = 0; i < 3; i++) {
+			if (board[i * 5 + 5 - i] === sign) count++;
+		}
+		if (count === 3) return true;
+
+		count = 0;
+		for (let i = 1; i < 4; i++) {
+			if (board[i * 5 + 5 - i] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	if (row + column === 6) {
+		let count = 0;
+		for (let i = 0; i < 2; i++) {
+			if (board[i * 5 + 6 - i] === sign) count++;
+		}
+		if (count === 3) return true;
+	}
+
+	return false;
 }
